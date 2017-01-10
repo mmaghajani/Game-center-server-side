@@ -15,6 +15,8 @@ class CreateUserCategoryTable extends Migration
     {
         Schema::create('user_category', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('user');
+            $table->string('category');
             $table->timestamps();
         });
     }
