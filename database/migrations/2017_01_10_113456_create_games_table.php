@@ -17,7 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('abstract');
-            $table->string('info');
+            $table->text('info');
             $table->string('rate');
             $table->integer('number_of_comments');
             $table->string('large_image');
