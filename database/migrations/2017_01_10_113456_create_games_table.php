@@ -19,7 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('abstract');
             $table->text('info');
             $table->string('rate');
-            $table->integer('number_of_comments');
+            $table->integer('number_of_comments')->default(0);
             $table->string('large_image');
             $table->string('small_image');
 
