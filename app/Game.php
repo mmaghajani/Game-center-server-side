@@ -23,7 +23,7 @@ class Game extends Model
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        'remember_token','id',
     ];
 
     /**

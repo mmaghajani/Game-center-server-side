@@ -66,7 +66,6 @@ class HomeController extends Controller
         $rate = 0;
         foreach ($gamesCategory as $gameCategory) {
             $game = $gameCategory->game;
-            dd($game);
             if ($game->rate > $rate) {
                 $rate = $game->rate;
                 $popularGame = $game;
