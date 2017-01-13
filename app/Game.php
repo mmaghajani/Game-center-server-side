@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    use Notifiable;
+    //use Notifiable;
 
     /**
      * The attributes that are mass assignable.

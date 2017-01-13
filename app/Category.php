@@ -14,6 +14,7 @@ class Category extends Model
     public function games(){
         return $this->hasMany(GameCategory::class);
     }
+
     /**
      * Returns all users interested this category
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
