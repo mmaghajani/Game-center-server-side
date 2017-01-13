@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get("/home" , 'HomeController@index');
+Route::get('/games/{title}/header' , 'GameController@header');
+Route::get('/games/{title}/info' , 'GameController@infoTab');
+Route::get('/games/{title}/leaderboard' , 'GameController@leaderBoardTab');
+Route::get('/games/{title}/comments' , 'GameController@commentsTab');
+Route::get('/games/{title}/comments?offset={offset}' , 'GameController@commentsTab');
+Route::get('/games/{title}/related_games' , 'GameController@relatedGamesTab');
+Route::get('/games/{title}/gallery' , 'GameController@galleryTab');
+Route::get('/games?q={search_keyword}' , 'GamesListController@index');
