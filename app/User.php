@@ -26,4 +26,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * This method returns all comments for this user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(){
+        return $this->hasMany(Comment::class , 'player' , 'email' );
+    }
+    /**
+     * returns all favorite categories for this user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function favoriteCategories(){
+        return $this->hasMany(UserCategory::class , 'user' , 'email' );
+    }
+    /**
+     * Returns all user records
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function records(){
+        return $this->hasMany(Record::class , 'player' , 'email');
+    }
 }
