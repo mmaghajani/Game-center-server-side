@@ -36,15 +36,12 @@ class HomeController extends Controller
         $homepage = [ "slider" => $slider , "new_games" => $new_games , "comments" => $comments];
         $result = ["homepage" => $homepage];
         $response = ["ok" => true , "result" => $result];
-
-        return "salam";
+        $final = ["response" => $response];
+        return $final;
     }
 
     private function getComments(){
-        $comments = Comment::query()->orderBy('created_at' , 'desc');
-
-        $recentComments = array($comments[0] , $comments[1] , $comments[2] , $comments[3] , $comments[4]);
-        return $recentComments;
+        return Comment::query()->orderBy('created_at' , 'desc')->take(5)->get();
     }
 
     private function makeSlider(){
@@ -52,7 +49,8 @@ class HomeController extends Controller
         $categories = Category::all();
         $index = 0;
         foreach ($categories as $category) {
-            $games = $category->games();
+            $games = $category->games;
+            dd($games[0]);
             $popularGame = $this->findPopularGame($games);
             $slider[$index] = $popularGame;
             $index++;
@@ -77,9 +75,7 @@ class HomeController extends Controller
 
     private function makeNewGames()
     {
-        $games = Game::all();
-        echo $games;
-        $newGames = array($games[0] , $games[1] , $games[2] , $games[3] , $games[4]);
+        $newGames = Game::query()->orderBy('created_at' , 'desc')->take(5)->get();
         return $newGames;
     }
 }
