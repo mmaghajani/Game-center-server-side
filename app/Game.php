@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    use Notifiable;
+    //use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class Game extends Model
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        'remember_token','id',
     ];
 
     /**
