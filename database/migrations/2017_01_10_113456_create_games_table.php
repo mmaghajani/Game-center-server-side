@@ -22,7 +22,6 @@ class CreateGamesTable extends Migration
             $table->integer('number_of_comments')->default(0);
             $table->string('large_image');
             $table->string('small_image');
-
             $table->timestamps();
         });
     }
