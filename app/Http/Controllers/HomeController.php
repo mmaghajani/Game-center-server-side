@@ -49,8 +49,8 @@ class HomeController extends Controller
     private function makeSlider()
     {
         $slider = array();
-        $categories = Category::all();
-        //dd($categories);
+        $categories = Category::with('games')->get();
+        dd($categories);
         $index = 0;
         foreach ($categories as $category) {
             $games = $category->games;
