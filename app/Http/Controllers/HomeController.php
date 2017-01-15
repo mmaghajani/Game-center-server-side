@@ -43,13 +43,14 @@ class HomeController extends Controller
 
     private function getComments()
     {
-        return Comment::query()->orderBy('created_at', 'desc')->take(5)->get();
+        return Comment::orderBy('created_at', 'desc')->take(5)->get();
     }
 
     private function makeSlider()
     {
         $slider = array();
-        $categories = Category::all();
+        $categories = Category::with('games')->get();
+        dd($categories);
         $index = 0;
         foreach ($categories as $category) {
             $games = $category->games;
