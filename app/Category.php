@@ -20,7 +20,7 @@ class Category extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function games(){
-        return $this->hasMany(GameCategory::class);
+        return $this->belongsToMany(Game::class , 'game_categories' , 'category_id' , 'game_title' );
     }
 
     /**
