@@ -31,7 +31,7 @@ class Game extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function categories(){
-        return $this->hasMany(GameCategory::class , 'game_id' , 'title');
+        return $this->belongsToMany(Category::class , 'game_categories' ,'game_id' , 'title');
     }
     /**
      * Get all comments that written for this game

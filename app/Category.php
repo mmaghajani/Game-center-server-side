@@ -28,6 +28,6 @@ class Category extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users(){
-        return $this->hasMany(UserCategory::class);
+        return $this->belongsToMany(User::class);
     }
 }

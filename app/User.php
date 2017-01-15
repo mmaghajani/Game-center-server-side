@@ -39,7 +39,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function favoriteCategories(){
-        return $this->hasMany(UserCategory::class , 'user' , 'email' );
+        return $this->belongsToMany(Category::class);
     }
     /**
      * Returns all user records
