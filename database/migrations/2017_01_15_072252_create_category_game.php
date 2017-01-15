@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGameCategoriesTable extends Migration
+class CreateCategoryGame extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class CreateGameCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_categories', function (Blueprint $table) {
+        //
+        Schema::create('category_game', function (Blueprint $table) {
             $table->increments('id');
             $table->string('game_id');
             $table->string('category_id');
@@ -28,6 +29,7 @@ class CreateGameCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_categories');
+        //
+        Schema::dropIfExists('category_game');
     }
 }
