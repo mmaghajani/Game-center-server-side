@@ -50,7 +50,7 @@ class HomeController extends Controller
     {
         $slider = array();
         $categories = Category::with('games')->get();
-        dd($categories);
+        //dd($categories);
         $index = 0;
         foreach ($categories as $category) {
             $games = $category->games;
@@ -62,12 +62,11 @@ class HomeController extends Controller
         return $slider;
     }
 
-    private function findPopularGame($gamesCategory)
+    private function findPopularGame($games)
     {
         $popularGame = new Game();
         $rate = 0;
-        foreach ($gamesCategory as $gameCategory) {
-            $game = $gameCategory->game;
+        foreach ($games as $game) {
             if ($game->rate > $rate) {
                 $rate = $game->rate;
                 $popularGame = $game;
