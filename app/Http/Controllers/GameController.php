@@ -60,9 +60,18 @@ class GameController extends Controller
         return $final;
     }
 
-    public function relatedGamesTab()
+    public function relatedGamesTab($title)
     {
+        $game = $this->getGameWithTitle($title);
+        $categories = $game->categories;
+        $collection = collect();
+        foreach ($categories as $category) {
+            $collection->push($category->games);
+        }
 
+        $result = ["games" => $collection->collapse()->unique('title')->values()];
+        $final = $this->createFinalResponse($result);
+        return $final;
     }
 
     public function galleryTab()
