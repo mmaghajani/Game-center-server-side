@@ -10,34 +10,38 @@ class GameController extends Controller
 {
     //
     public function header($title){
-        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
+        $game = $this->getGameWithTitle($title);
 
-        $result = ["game" => $game[0]];
-        $response = ["ok" => true, "result" => $result];
-        $final = ["response" => $response];
+        $result = ["game" => $game];
+        $final = $this->createFinalResponse($result);
         return $final;
     }
 
     public function infoTab($title){
-        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
+        $game = $this->getGameWithTitle($title);
 
-        $result = ["game" => $game[0]];
-        $response = ["ok" => true, "result" => $result];
-        $final = ["response" => $response];
+        $result = ["game" => $game];
+        $final = $this->createFinalResponse($result);
         return $final;
     }
 
     public function leaderBoardTab($title){
-        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
-        $records = $game[0]->records->load('user');
+        $game = $this->getGameWithTitle($title);
+
+        $records = $game->records->load('user');
+
         $result = ["leaderboard" => $records];
-        $response = ["ok" => true, "result" => $result];
-        $final = ["response" => $response];
+        $final = $this->createFinalResponse($result);
         return $final;
     }
 
-    public function commentsTab(){
+    public function commentsTab($title){
+        $game = $this->getGameWithTitle($title);
 
+        $comments = $game->comments->load('user');
+        $result = ["comments" => $comments];
+        $final = $this->createFinalResponse($result);
+        return $final;
     }
 
     public function commentsOffset($offset){
@@ -50,5 +54,16 @@ class GameController extends Controller
 
     public function galleryTab(){
 
+    }
+
+    private function getGameWithTitle($title){
+        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
+        return $game[0];
+    }
+
+    private function createFinalResponse($result){
+        $response = ["ok" => true, "result" => $result];
+        $final = ["response" => $response];
+        return $final;
     }
 }
