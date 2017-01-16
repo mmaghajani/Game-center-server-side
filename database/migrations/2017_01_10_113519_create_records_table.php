@@ -13,7 +13,7 @@ class CreateRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('record', function (Blueprint $table) {
+        Schema::create('records', function (Blueprint $table) {
             $table->increments('id');
             $table->string('player');
             $table->integer('score');
@@ -31,6 +31,6 @@ class CreateRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('record');
+        Schema::dropIfExists('records');
     }
 }

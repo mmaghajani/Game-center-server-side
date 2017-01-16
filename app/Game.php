@@ -44,7 +44,7 @@ class Game extends Model
      * Returns scoreboard for this game
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function usersRecords(){
+    public function records(){
         return $this->hasMany(Record::class , 'game' , 'title');
     }
 }

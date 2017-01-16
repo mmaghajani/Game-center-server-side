@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Record;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -26,8 +27,13 @@ class GameController extends Controller
         return $final;
     }
 
-    public function leaderBoardTab(){
-
+    public function leaderBoardTab($title){
+        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
+        $records = $game[0]->records->load('user');
+        $result = ["leaderboard" => $records];
+        $response = ["ok" => true, "result" => $result];
+        $final = ["response" => $response];
+        return $final;
     }
 
     public function commentsTab(){
