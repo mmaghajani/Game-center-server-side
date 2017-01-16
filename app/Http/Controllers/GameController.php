@@ -17,8 +17,13 @@ class GameController extends Controller
         return $final;
     }
 
-    public function infoTab(){
+    public function infoTab($title){
+        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
 
+        $result = ["game" => $game[0]];
+        $response = ["ok" => true, "result" => $result];
+        $final = ["response" => $response];
+        return $final;
     }
 
     public function leaderBoardTab(){
