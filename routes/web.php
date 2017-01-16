@@ -20,4 +20,4 @@ Route::get('/games/{title}/comments/{offset}' , 'GameController@commentsOffset')
 Route::get('/games/{title}/comments' , 'GameController@commentsTab');
 Route::get('/games/{title}/related_games' , 'GameController@relatedGamesTab');
 Route::get('/games/{title}/gallery' , 'GameController@galleryTab');
-Route::get('/games?q={search_keyword}' , 'GamesListController@index');
+Route::get('/games/{search_keyword}' , 'GameListController@index');
