@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Record;
-use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
     //
-    public function header($title){
+    public function header($title)
+    {
         $game = $this->getGameWithTitle($title);
 
         $result = ["game" => $game];
@@ -17,7 +16,8 @@ class GameController extends Controller
         return $final;
     }
 
-    public function infoTab($title){
+    public function infoTab($title)
+    {
         $game = $this->getGameWithTitle($title);
 
         $result = ["game" => $game];
@@ -25,7 +25,8 @@ class GameController extends Controller
         return $final;
     }
 
-    public function leaderBoardTab($title){
+    public function leaderBoardTab($title)
+    {
         $game = $this->getGameWithTitle($title);
 
         $records = $game->records->load('user');
@@ -35,7 +36,8 @@ class GameController extends Controller
         return $final;
     }
 
-    public function commentsTab($title){
+    public function commentsTab($title)
+    {
         $game = $this->getGameWithTitle($title);
 
         $comments = $game->comments->load('user');
@@ -44,24 +46,38 @@ class GameController extends Controller
         return $final;
     }
 
-    public function commentsOffset($offset){
+    public function commentsOffset($title, $offset)
+    {
+        $game = $this->getGameWithTitle($title);
+        $comments = $game->comments->load(['user' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
+
+        $remainingComments = array_slice($comments->toArray(), $offset);
+
+        $result = ["comments" => $remainingComments];
+        $final = $this->createFinalResponse($result);
+        return $final;
+    }
+
+    public function relatedGamesTab()
+    {
 
     }
 
-    public function relatedGamesTab(){
+    public function galleryTab()
+    {
 
     }
 
-    public function galleryTab(){
-
-    }
-
-    private function getGameWithTitle($title){
-        $game = Game::with('categories')->where( 'title' , '=' , $title)->get();
+    private function getGameWithTitle($title)
+    {
+        $game = Game::with('categories')->where('title', '=', $title)->get();
         return $game[0];
     }
 
-    private function createFinalResponse($result){
+    private function createFinalResponse($result)
+    {
         $response = ["ok" => true, "result" => $result];
         $final = ["response" => $response];
         return $final;
