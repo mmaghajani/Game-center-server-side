@@ -43,7 +43,11 @@ class HomeController extends Controller
 
     private function getComments()
     {
-        return Comment::orderBy('created_at', 'desc')->take(5)->get();
+        return Comment::with(['user'=> function($query){
+            $query->orderBy('created_at', 'desc');
+        } ,'game'=> function($query){
+            $query->orderBy('created_at', 'desc');
+        }])->take(5)->get();
     }
 
     private function makeSlider()
