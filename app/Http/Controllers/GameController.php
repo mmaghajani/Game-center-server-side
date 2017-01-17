@@ -29,7 +29,7 @@ class GameController extends Controller
     {
         $game = $this->getGameWithTitle($title);
 
-        $records = $game->records->load('user');
+        $records = $game->records->load('user')->sortByDesc('score')->values();
 
         $result = ["leaderboard" => $records];
         $final = $this->createFinalResponse($result);
