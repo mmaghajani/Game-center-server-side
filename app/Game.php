@@ -23,7 +23,7 @@ class Game extends Model
      * @var array
      */
     protected $hidden = [
-        'remember_token','id',
+        'remember_token','id','created_at' , 'updated_at', 'pivot',
     ];
 
     /**
