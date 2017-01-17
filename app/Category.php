@@ -13,7 +13,7 @@ class Category extends Model
      * @var array
      */
     protected $hidden = [
-        'id',
+        'id', 'created_at' , 'updated_at' , 'pivot',
     ];
     /**
      * Returns all game that associated with this category
