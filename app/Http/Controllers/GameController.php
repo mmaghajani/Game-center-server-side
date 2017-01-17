@@ -67,7 +67,7 @@ class GameController extends Controller
         $categories = $game->categories;
         $collection = collect();
         foreach ($categories as $category) {
-            $collection->push($category->games);
+            $collection->push($category->games->load('categories'));
         }
 
         $result = ["games" => $collection->collapse()->unique('title')->values()];
