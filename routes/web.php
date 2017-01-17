@@ -24,4 +24,7 @@ Route::get('/games/{title}/related_games.json' , 'GameController@relatedGamesTab
 Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
 Route::get('/games/{search_keyword}' , 'GameListController@index');
 
+Route::get('/register' , 'SiteController@register');
+Route::get('/login' , 'SiteController@login');
+
 Auth::routes();

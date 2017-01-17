@@ -1,68 +1,57 @@
-@extends('layouts.app')
+<!doctype html>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <title>ورود</title>
+    <meta name="description" content="ورود به سایت">
+    <meta name="author" content="mma">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css"‍ rel="stylesheet">
+    <link rel="stylesheet" href="/css/hw2-global.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link href="https://cdn.rawgit.com/rastikerdar/shabnam-font/v1.0.2/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<body>
+<div id="header">
+    <ul id="menu" class="container">
+        <li id="account" class="account col-xs-6 text-center"><a href="#"><i class="material-icons md-36">account_box</i></a></li>
+        <li id="games" class="games col-xs-6 text-center"><a href="#">ceitgames</a></li>
+    </ul>
+</div>
+<div id="content">
+    <div id="form">
+        <div id="form_content">
+            <div id="title">
+                ورود
             </div>
+            <div id="form_body">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                    <div id="row1"><input class="field" type="text" name="firstname"
+                                          placeholder="ایمیل یا شماره تلفن">
+                        <i class="material-icons md-36">email</i>
+                    </div>
+                    <br>
+                    <div id="row2"><input class="field" type="password" name="lastname"
+                                          placeholder="رمز عبور">
+                        <i class="material-icons md-36">https</i>
+                    </div>
+                    <br><br>
+                    <input id="submit_button" type="submit" value="ورود">
+                </form>
+            </div>
+            <div id="text_plain"><a href="#"> رمزمو یادم رفته </a></div>
+        </div>
+        <div id="form_footer">
+            حساب کاربری ندارید؟<a href="./register.html"> ثبت نام کنید </a>
         </div>
     </div>
 </div>
-@endsection
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
