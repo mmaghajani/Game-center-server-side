@@ -78,7 +78,9 @@ class HomeController extends Controller
 
     private function makeNewGames()
     {
-        $newGames = Game::query()->orderBy('created_at', 'desc')->take(5)->get();
+        $newGames = Game::with(['categories' => function($query){
+            $query->orderBy('created_at', 'desc');
+        }])->take(5)->get();
         return $newGames;
     }
 
