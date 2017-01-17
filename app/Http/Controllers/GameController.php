@@ -39,8 +39,11 @@ class GameController extends Controller
     public function commentsTab($title)
     {
         $game = $this->getGameWithTitle($title);
+        $comments = $game->comments->load('user' , 'game');
 
-        $comments = $game->comments->load('user');
+        $cut_point = rand(1 , $comments->count());
+        $comments = $comments->slice(0 , $cut_point);
+
         $result = ["comments" => $comments];
         $final = $this->createFinalResponse($result);
         return $final;
