@@ -14,8 +14,7 @@ html , body{
     alignment: center;
     background: #eaebed;
     width: 450px;
-    height: 568px;
-    padding-top: 20px;
+    height: 600px;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0px 5px 10px #4f5051;
@@ -60,11 +59,12 @@ html , body{
 #form_body i {
     color: #737373;
     alignment-baseline: bottom;
-    margin-top: 30px;
-    margin-right: 50px;
     float: right;
 }
 
+.field-box{
+    padding: 0px 0px 0px 20px;
+}
 .field {
     height: 40px;
     align-content: center;
@@ -83,7 +83,7 @@ html , body{
     border-bottom: 4px solid #c6134f;
 }
 
-#row1 input:focus ~ i {
+#row1 input:focus div i {
     color: #c6134f;
 }
 
@@ -97,10 +97,9 @@ html , body{
 
 #submit_button {
     height: 55px;
-    width: 350px;
+    width: 100%;
     align-content: center;
     align-self: center;
-    margin: 15px 52px 15px 15px;
     padding: 10px;
     background: #0087ff;
     border-radius: 4px;
@@ -187,9 +186,6 @@ input[type="checkbox"]:checked + label:after {
 
 #accept {
     font-family: Shabnam;
-    width: 288px;
-    margin-right: 35px;
-    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 22px;
     color: #737373;
