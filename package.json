@@ -14,5 +14,12 @@
     "lodash": "^4.16.2",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "owl.carousel": "^2.2.0",
+    "video-js": "^0.7.0",
+    "video.js": "^5.15.1"
   }
 }
