@@ -22,12 +22,15 @@ Route::get('/games/{title}/comments' , 'GameController@commentsOffset');
 Route::get('/games/{title}/comments.json' , 'GameController@commentsTab');
 Route::get('/games/{title}/related_games.json' , 'GameController@relatedGamesTab');
 Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
-Route::get('/games' , 'GameListController@index');
+Route::get('/games.json' , 'GameListController@index');
 
 Route::get('/home' , 'SiteController@index');
+Route::get('/index.html' , 'SiteController@index');
 Route::get('/games_list.html' , 'SiteController@listOfGame');
 Route::get('/games.html' , 'SiteController@game');
 Route::get('/register' , 'SiteController@register');
+Route::get('/register.html' , 'SiteController@register');
 Route::get('/login' , 'SiteController@login');
+Route::get('/login.html' , 'SiteController@login');
 
 Auth::routes();
