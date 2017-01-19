@@ -15,10 +15,10 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('player');
+            $table->integer('user_id');
             $table->integer('score');
             $table->integer('level');
-            $table->string('game');
+            $table->integer('game_id');
             $table->integer('displacement');
             $table->timestamps();
         });
