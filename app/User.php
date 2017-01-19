@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments(){
-        return $this->hasMany(Comment::class , 'player' , 'email' );
+        return $this->hasMany(Comment::class);
     }
     /**
      * returns all favorite categories for this user
@@ -46,6 +46,6 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function records(){
-        return $this->hasMany(Record::class , 'player' , 'email');
+        return $this->hasMany(Record::class);
     }
 }

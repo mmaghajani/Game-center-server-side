@@ -16,7 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->string('abstract');
+            $table->text('abstract');
             $table->text('info');
             $table->string('rate');
             $table->integer('number_of_comments')->default(0);
