@@ -32,7 +32,10 @@ class GameController extends Controller
         $game = $this->getGameWithTitle($title);
 
         $records = $game->records->load('user')->sortByDesc('score')->values();
-
+        $records = $records->map(function ($item, $key) {
+            return ['score' => $item['score'], 'level' => $item['level'], 'displacement' => $item['displacement'],
+                'player' => $item['user']];
+        });
         $result = ["leaderboard" => $records];
         $final = $this->createFinalResponse($result);
         return $final;
@@ -100,7 +103,7 @@ class GameController extends Controller
             ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static1.gamespot.com/uploads/scale_super/1197/11970954/2886481-tlg_e315_04.jpg'],
             ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static3.gamespot.com/uploads/original/mig/7/8/4/7/1667847-952634_20110302_003.jpg'],
             ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static3.gamespot.com/uploads/original/mig/7/8/4/7/1667847-952634_20110302_003.jpg'],
-            ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static1.gamespot.com/uploads/scale_super/1197/11970954/2886481-tlg_e315_04.jpg']], 'videos' => [['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://www.gamespot.com/videos/embed/6425430/']]]]]];
+            ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static1.gamespot.com/uploads/scale_super/1197/11970954/2886481-tlg_e315_04.jpg']], 'videos' => [['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://as4.tabriz.asset.aparat.com/aparat-video/33599344cedadecf865082b9c469cc6f5900322-360p__48466.mp4']]]]]];
     }
 
     private function getGameWithTitle($title)
