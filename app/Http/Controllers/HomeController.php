@@ -43,9 +43,9 @@ class HomeController extends Controller
 
     private function getComments()
     {
-        return Comment::with(['user'=> function($query){
+        return Comment::with(['user' => function ($query) {
             $query->orderBy('created_at', 'desc');
-        } ,'game'=> function($query){
+        }, 'game' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }])->take(5)->get();
     }
@@ -54,19 +54,22 @@ class HomeController extends Controller
     {
         $slider = collect();
         $categories = Category::with('games')->get();
+        $index = 0;
         foreach ($categories as $category) {
             $games = $category->games->load('categories');
             if (!$games->isEmpty()) {
-                $popularGame = $this->findPopularGame($games);
+                $popularGame = $this->findPopularGame($games, $slider, $index);
                 $popularGameWithTruthCategory = $this->fetchCategory($popularGame);
 
                 $slider->push($popularGameWithTruthCategory);
+                $index++;
             }
         }
         return $slider->unique('title')->values();
     }
 
-    private function fetchCategory($game){
+    private function fetchCategory($game)
+    {
         foreach ($game->categories as $key) {
             $game->categories->prepend($key->title);
             $game->categories->pop();
@@ -74,10 +77,14 @@ class HomeController extends Controller
 
         return $game;
     }
-    private function findPopularGame($games)
+
+    private function findPopularGame($games, $collection)
     {
         $popularGame = new Game();
         $rate = 0;
+
+        $games = $games->diff($collection);
+
         foreach ($games as $game) {
             if ($game->rate > $rate) {
                 $rate = $game->rate;
@@ -90,7 +97,7 @@ class HomeController extends Controller
 
     private function makeNewGames()
     {
-        $newGames = Game::with(['categories' => function($query){
+        $newGames = Game::with(['categories' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }])->take(5)->get();
         return $newGames;
