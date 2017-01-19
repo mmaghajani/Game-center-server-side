@@ -348,7 +348,7 @@
                                 <li><a href="#" class="text-success">سوالات متداول</a></li>
                                 <li><a href="#" class="text-success">ارتباط با سازندگان</a></li>
                                 <li><a href="#" class="text-success">درباره ما</a></li>
-                                <li><a href="#" class="text-success">صفحه اصلی</a></li>
+                                <li><a href="index.html" class="text-success">صفحه اصلی</a></li>
                             </ul>
                         </div>
                     </nav>
