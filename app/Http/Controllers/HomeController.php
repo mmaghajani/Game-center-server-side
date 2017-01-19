@@ -52,20 +52,28 @@ class HomeController extends Controller
 
     private function makeSlider()
     {
-        $slider = array();
+        $slider = collect();
         $categories = Category::with('games')->get();
-        $index = 0;
         foreach ($categories as $category) {
             $games = $category->games->load('categories');
             if (!$games->isEmpty()) {
                 $popularGame = $this->findPopularGame($games);
-                $slider[$index] = $popularGame;
-                $index++;
+                $popularGameWithTruthCategory = $this->fetchCategory($popularGame);
+
+                $slider->push($popularGameWithTruthCategory);
             }
         }
-        return $slider;
+        return $slider->unique('title')->values();
     }
 
+    private function fetchCategory($game){
+        foreach ($game->categories as $key) {
+            $game->categories->prepend($key->title);
+            $game->categories->pop();
+        }
+
+        return $game;
+    }
     private function findPopularGame($games)
     {
         $popularGame = new Game();
