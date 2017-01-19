@@ -43,11 +43,12 @@ class HomeController extends Controller
 
     private function getComments()
     {
-        return Comment::with(['user' => function ($query) {
-            $query->orderBy('created_at', 'desc');
-        }, 'game' => function ($query) {
-            $query->orderBy('created_at', 'desc');
-        }])->take(5)->get();
+        $comments = Comment::with('game' , 'user')->take(5)->get();
+
+        return $comments->map(function($item , $key){
+            return [ 'text' => $item['text'] , 'rate' => $item['rate'] , 'date' => $item['date'] ,
+                'player' => $item['user'] , 'game' => $item['game']];
+        })->sortBy('created_at');
     }
 
     private function makeSlider()
@@ -58,7 +59,7 @@ class HomeController extends Controller
         foreach ($categories as $category) {
             $games = $category->games->load('categories');
             if (!$games->isEmpty()) {
-                $popularGame = $this->findPopularGame($games, $slider, $index);
+                $popularGame = $this->findPopularGame($games, $slider);
                 $popularGameWithTruthCategory = $this->fetchCategory($popularGame);
 
                 $slider->push($popularGameWithTruthCategory);

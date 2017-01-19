@@ -13,14 +13,14 @@ class Record extends Model
      * @var array
      */
     protected $hidden = [
-        'id','created_at','updated_at','player', 'game',
+        'id','created_at','updated_at','user_id', 'game_id',
     ];
 
     public function game(){
-        return $this->hasOne(Game::class , 'title' , 'game');
+        return $this->belongsTo(Game::class);
     }
 
     public function user(){
-        return $this->hasOne(User::class , 'email' , 'player');
+        return $this->belongsTo(User::class);
     }
 }

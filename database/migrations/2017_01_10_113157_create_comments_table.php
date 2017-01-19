@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->string('text');
             $table->integer('rate');
             $table->string('date');
-            $table->string('player');
-            $table->string('game');
+            $table->integer('user_id');
+            $table->integer('game_id');
             $table->timestamps();
         });
     }
