@@ -121,14 +121,8 @@ class GameController extends Controller
         $game = Game::all()->where('title', '=', html_entity_decode($input['title']));
         $game = $game->pop();
 
-        $date = $this->mds_date("Y-D-A-L-Z-a-m-d-y");
-        $date = html_entity_decode($date);
-        $date = explode('-', $date);
-        $year = $date[0];
-        $month = $date[6];
-        $day = $date[7];
 
-        $date = $this->formatDateToString($year , $month , $day);
+        $date = $this->formatDateToJalaliString();
 
         $comment->date = $date;
 
@@ -139,9 +133,16 @@ class GameController extends Controller
         return redirect('/home');
     }
 
-    private function formatDateToString($year , $month , $day){
+    private function formatDateToJalaliString()
+    {
         $s = "";
 
+        $date = $this->mds_date("Y-D-A-L-Z-a-m-d-y");
+        $date = html_entity_decode($date);
+        $date = explode('-', $date);
+        $year = $date[0];
+        $month = $date[6];
+        $day = $date[7];
 
 
         $x = intval($year);
@@ -151,8 +152,8 @@ class GameController extends Controller
         $x = intval($x);
 
         $yearS = "";
-        while( $x > 0 ){
-            switch (strval($x%10)){
+        while ($x > 0) {
+            switch (strval($x % 10)) {
                 case "0":
                     $yearS .= "۰";
                     break;
@@ -189,7 +190,7 @@ class GameController extends Controller
         }
 
         $monthS = "";
-        switch ($month){
+        switch ($month) {
             case "01":
                 $monthS .= "فروردین";
                 break;
@@ -236,9 +237,9 @@ class GameController extends Controller
         $x = intval($x);
 
         $dS = "";
-        while( $x > 0 ){
+        while ($x > 0) {
 
-            switch (strval($x%10)){
+            switch (strval($x % 10)) {
                 case "0":
                     $dS .= "۰";
                     break;
@@ -276,10 +277,7 @@ class GameController extends Controller
         }
 
 
-
-
-
-        $s = $dS . " " . $monthS . " " . $yearS  ;
+        $s = $dS . " " . $monthS . " " . $yearS;
 
 
         return $s;
@@ -309,11 +307,7 @@ class GameController extends Controller
 
         return $game;
     }
-    /*
-    Created by : Jalali
-    modified by : Mohammad Dayyan
-    1387/5/15
-    */
+
 
     function mds_date($format, $when = "now", $persianNumber = 0)
     {
