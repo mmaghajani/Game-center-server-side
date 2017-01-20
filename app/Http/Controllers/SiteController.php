@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -34,8 +35,15 @@ class SiteController extends Controller
     }
 
     public function profile(Request $request, $token = null){
+        $user = Auth::user();
+        $categories = $user->favoriteCategories;
+        $s = collect();
+        foreach ($categories as $category){
+            $s->put( $category->title , 'checked');
+        }
+
         return view('profile')->with(
-            ['token' => $token, 'email' => $request->email]
+            ['token' => $token, 'email' => $request->email , 'category' => $s]
         );
     }
 }

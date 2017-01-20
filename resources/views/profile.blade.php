@@ -89,5 +89,34 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">تغییر دسته بندی های مورد علاقه</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/change_favorite_categories') }}">
+                            {{ csrf_field() }}
+
+                            <input type="hidden" name="token" value="{{ $token }}">
+                            <label class="checkbox-inline"><input type="checkbox" name="تیراندازی" {{$category->pull('تیراندازی')}} value="checked">تیراندازی</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="اول شخص" {{$category->pull('اول شخص')}} value="">اول شخص</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="اکشن" {{$category->pull('اکشن')}} value="">اکشن</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="ماجراجویی" {{$category->pull('ماجراجویی')}} value="">ماجراجویی</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="ورزشی" {{$category->pull('ورزشی')}} value="">ورزشی</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="مهارتی" {{$category->pull('مهارتی')}} value="">مهارتی</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="ماشین سواری" {{$category->pull('ماشین سواری')}} value="">ماشین سواری</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="فکری" {{$category->pull('فکری')}} value="">فکری</label>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        ثبت
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @endsection
