@@ -33,5 +33,6 @@ Route::get('/register' , 'SiteController@register');
 Route::get('/register.html' , 'SiteController@register');
 Route::get('/login' , 'SiteController@login');
 Route::get('/login.html' , 'SiteController@login');
+Route::post('/submit_comment' , 'GameController@submitComment');
 
 Auth::routes();

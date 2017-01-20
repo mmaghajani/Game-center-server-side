@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
 use App\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -106,6 +108,25 @@ class GameController extends Controller
             ['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://static1.gamespot.com/uploads/scale_super/1197/11970954/2886481-tlg_e315_04.jpg']], 'videos' => [['title' => 'Last Guardian', 'views' => '5', 'url' => 'http://as4.tabriz.asset.aparat.com/aparat-video/33599344cedadecf865082b9c469cc6f5900322-360p__48466.mp4']]]]]];
     }
 
+    public function submitComment(Request $request){
+        $user = Auth::user();
+        $input = $request->all();
+
+//        dd(html_entity_decode($input['title']));
+        $comment = new Comment;
+        $comment->text = $input['content'];
+        $comment->rate = $input['score'];
+        $comment->user_id = $user->id;
+        $game = Game::all()->where( 'title' , '=' , html_entity_decode($input['title']));
+        $game = $game->pop();
+
+        $comment->game_id = $game->id;
+
+        $comment->save();
+
+        return redirect('/home');
+    }
+
     private function getGameWithTitle($title)
     {
         $game = Game::with('categories')->where('title', '=', $title)->get();
@@ -130,4 +151,6 @@ class GameController extends Controller
 
         return $game;
     }
+
+
 }

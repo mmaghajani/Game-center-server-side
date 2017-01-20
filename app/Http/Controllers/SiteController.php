@@ -19,8 +19,10 @@ class SiteController extends Controller
         return view('home');
     }
 
-    public function game(){
-        return view('game');
+    public function game(Request $request){
+        $url = $request->fullUrl();
+        $game = urldecode(explode('=', explode('?', $url)[1])[1]);
+        return view('game')->with(['game' => $game]);
     }
 
     public function listOfGame(){

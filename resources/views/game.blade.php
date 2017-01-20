@@ -251,37 +251,55 @@
         <div id="comment" class="tab-pane fade">
             <div class="row title-holder media">
                 <div class="text-left media-middle media-left col-xs-12 col-sm-2">
-                    <button type="button" class="btn-primary h5 col-xs-12 col-sm-12 media-object" data-toggle="modal"
-                            data-target="#myModal">نظر دهید
-                    </button>
-                    <!-- Modal -->
+                    @if(Auth::guest())
+                        <a href="login.html">
+                            <button type="button" class="btn-primary h5 col-xs-12 col-sm-12 media-object"
+                                    data-toggle="modal"
+                                    data-target="">نظر دهید
+                            </button>
+                        </a>
+                    @else
+                        <button type="button" class="btn-primary h5 col-xs-12 col-sm-12 media-object"
+                                data-toggle="modal"
+                                data-target="#myModal">نظر دهید
+                        </button>
+                @endif
+
+                <!-- Modal -->
                     <div id="myModal" class="modal fade" role="dialog">
                         <div class="modal-dialog modal-lg">
 
                             <!-- Modal content-->
                             <div class="modal-content text-right">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <input type="text" class="h3" placeholder="عنوان">
-                                </div>
-                                <div class="modal-body">
-                                    <input type="text" class="h5" placeholder="نظر خود را بنویسید...">
-                                </div>
-                                <div class="modal-footer row vertical-align-wrap">
-                                    <div class="form-group text-right text-muted col-sm-3 col-md-2 col-lg-2 col-xs-4">
-                                        <label for="sel1" class="h6">امتیاز دهی :</label>
-                                        <select class="form-control" id="sel1">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                <form method="POST" action="{{url('/submit_comment')}}">
+                                    {{ csrf_field() }}
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <input type="text"  contenteditable="false" name="title" class="h3"
+                                        placeholder="عنوان" value="{{$game}}">
                                     </div>
-                                    <button type="button" class="btn btn-primary text-right vertical-align--middle"
-                                            data-dismiss="modal">ثبت نظر
-                                    </button>
-                                </div>
+
+                                    <div class="modal-body">
+                                        <input type="text" name="content" class="h5"
+                                               placeholder="نظر خود را بنویسید..." required autofocus>
+                                    </div>
+                                    <div class="modal-footer row vertical-align-wrap">
+                                        <div class="form-group text-right text-muted col-sm-3 col-md-2 col-lg-2 col-xs-4">
+                                            <label for="sel1" class="h6">امتیاز دهی :</label>
+                                            <select class="form-control" name="score" id="sel1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit"
+                                                class="btn btn-primary text-right vertical-align--middle"
+                                        >ثبت نظر
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
