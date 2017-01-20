@@ -8,6 +8,7 @@ use App\Game;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,16 +30,30 @@ class HomeController extends Controller
     public function index()
     {
 
-        $slider = $this->makeSlider();
-        $new_games = $this->makeNewGames();
-        $comments = $this->getComments();
-        $tutorials = $this->getTutorials();
+        if( Auth::guest()){
+            $slider = $this->makeGuestSlider();
+            $new_games = $this->makeNewGames();
+            $comments = $this->getComments();
+            $tutorials = $this->getTutorials();
 
-        $homepage = ["slider" => $slider, "new_games" => $new_games, "comments" => $comments, "tutorials" => $tutorials];
-        $result = ["homepage" => $homepage];
-        $response = ["ok" => true, "result" => $result];
-        $final = ["response" => $response];
-        return $final;
+            $homepage = ["slider" => $slider, "new_games" => $new_games, "comments" => $comments, "tutorials" => $tutorials];
+            $result = ["homepage" => $homepage];
+            $response = ["ok" => true, "result" => $result];
+            $final = ["response" => $response];
+            return $final;
+        }else{
+            $slider = $this->makeUserSlider();
+            $new_games = $this->makeNewGames();
+            $comments = $this->getComments();
+            $tutorials = $this->getTutorials();
+
+            $homepage = ["slider" => $slider, "new_games" => $new_games, "comments" => $comments, "tutorials" => $tutorials];
+            $result = ["homepage" => $homepage];
+            $response = ["ok" => true, "result" => $result];
+            $final = ["response" => $response];
+            return $final;
+        }
+
     }
 
     private function getComments()
@@ -51,7 +66,29 @@ class HomeController extends Controller
         })->sortBy('created_at');
     }
 
-    private function makeSlider()
+    private function makeUserSlider(){
+        $slider = collect();
+        $user = Auth::user();
+        $categories = $user->favoriteCategories;
+        if( $categories->isEmpty())
+            return $this->makeGuestSlider();
+        else {
+            $index = 0;
+            foreach ($categories as $category) {
+                $games = $category->games->load('categories');
+                if (!$games->isEmpty()) {
+                    foreach ($games as $game) {
+                        $gameFetch = $this->fetchCategory($game);
+                        $slider->push($gameFetch);
+                    }
+                    $index++;
+                }
+            }
+            return $slider->unique('title')->values();
+        }
+    }
+
+    private function makeGuestSlider()
     {
         $slider = collect();
         $categories = Category::with('games')->get();

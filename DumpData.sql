@@ -41,7 +41,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `category_user` WRITE;
 /*!40000 ALTER TABLE `category_user` DISABLE KEYS */;
-INSERT INTO `category_user` VALUES (1,1,2,NULL,NULL),(2,1,1,NULL,NULL),(3,2,2,NULL,NULL),(4,3,1,NULL,NULL),(5,4,2,NULL,NULL),(6,4,1,NULL,NULL),(7,10,1,NULL,NULL),(8,10,2,NULL,NULL),(9,11,1,NULL,NULL),(10,12,2,NULL,NULL),(11,13,1,NULL,NULL),(12,14,1,NULL,NULL),(13,15,1,NULL,NULL);
+INSERT INTO `category_user` VALUES (1,1,2,NULL,NULL),(2,1,1,NULL,NULL),(3,2,2,NULL,NULL),(4,3,1,NULL,NULL),(5,4,2,NULL,NULL),(6,4,1,NULL,NULL),(7,10,1,NULL,NULL),(8,10,2,NULL,NULL),(9,11,1,NULL,NULL),(10,12,2,NULL,NULL),(11,13,1,NULL,NULL),(12,14,1,NULL,NULL),(13,15,1,NULL,NULL),(14,16,2,NULL,NULL),(15,16,1,NULL,NULL),(16,16,8,NULL,NULL),(17,17,3,NULL,NULL),(18,17,5,NULL,NULL),(19,17,2,NULL,NULL),(20,18,4,NULL,NULL),(21,18,7,NULL,NULL),(22,18,6,NULL,NULL),(23,19,1,NULL,NULL),(24,19,2,NULL,NULL),(25,19,5,NULL,NULL),(26,22,8,NULL,NULL),(27,22,6,NULL,NULL),(28,22,4,NULL,NULL),(29,22,7,NULL,NULL),(30,22,3,NULL,NULL);
 /*!40000 ALTER TABLE `category_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,6 +71,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+INSERT INTO `password_resets` VALUES ('mma137421@gmail.com','c47e3e9f09f896d0cc6988dc2edd7ebd5c2ea475c88794ba196b199288f87e29','2017-01-20 04:56:29');
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +91,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'جو آلن','mmam@gmail.com','1234','/assets/prof2.jpg','jo_alen',NULL,NULL,NULL),(2,'شرلوک هولمز','sherlooook@yahoo.com','1234','/assets/prof2.jpg','sherloooooook_h',NULL,NULL,NULL),(3,'کریم باوی','karimm@gmail.com','1234','/assets/prof2.jpg','karim_bavi',NULL,NULL,NULL),(4,'سوکراتیس پاپاستوپولوس','sokrat@ymail.com','1234','/assets/prof2.jpg','sokrat_papa',NULL,NULL,NULL),(10,'پیر اوبامیانگ','pier@gmail.com','1234','/assets/prof2.jpg','obamia',NULL,NULL,NULL),(11,'ووهانگ چنگ','wooHang@yahoo.com','1234','/assets/prof2.jpg','woo_cheng',NULL,NULL,NULL),(12,'میرزا مرادبیگ','mirza@gmail.com','1234','/assets/prof2.jpg','mirzamorad',NULL,NULL,NULL),(13,'جلیل کومار','koomar@gmail.com','1234','/assets/prof2.jpg','where_snake',NULL,NULL,NULL),(14,'جان کوچولو','john@yahoo.com','1234','/assets/prof2.jpg','littleJohn',NULL,NULL,NULL),(15,'والنتینو','valentino@gmail.com','1234','/assets/prof2.jpg','valen95',NULL,NULL,NULL),(16,'محمد مهدی الآقاجانی','mma137421@gmail.com','$2y$10$lTgM7AaIsctgh4lOIXBGW.IIu62sx.e402Z6NYK5/rclTNWNFwVIW','/assets/prof2.jpg','asasasas',NULL,'2017-01-17 16:59:52','2017-01-17 16:59:52'),(17,'کریم عبد الجبار','karim@aut.ac.ir','$2y$10$crNgpoXVvvUbFhXKIN0q..pqziL.ei4E0LN1hGzUtxYwUT7OpmPkC','/assets/prof2.jpg','کریم عبد الجبار',NULL,'2017-01-18 16:31:54','2017-01-18 16:31:54');
+INSERT INTO `users` VALUES (1,'جو آلن','mmam@gmail.com','1234','/assets/prof2.jpg','jo_alen',NULL,NULL,NULL),(2,'شرلوک هولمز','sherlooook@yahoo.com','1234','/assets/prof2.jpg','sherloooooook_h',NULL,NULL,NULL),(3,'کریم باوی','karimm@gmail.com','1234','/assets/prof2.jpg','karim_bavi',NULL,NULL,NULL),(4,'سوکراتیس پاپاستوپولوس','sokrat@ymail.com','1234','/assets/prof2.jpg','sokrat_papa',NULL,NULL,NULL),(10,'پیر اوبامیانگ','pier@gmail.com','1234','/assets/prof2.jpg','obamia',NULL,NULL,NULL),(11,'ووهانگ چنگ','wooHang@yahoo.com','1234','/assets/prof2.jpg','woo_cheng',NULL,NULL,NULL),(12,'میرزا مرادبیگ','mirza@gmail.com','1234','/assets/prof2.jpg','mirzamorad',NULL,NULL,NULL),(13,'جلیل کومار','koomar@gmail.com','1234','/assets/prof2.jpg','where_snake',NULL,NULL,NULL),(14,'جان کوچولو','john@yahoo.com','1234','/assets/prof2.jpg','littleJohn',NULL,NULL,NULL),(15,'والنتینو','valentino@gmail.com','1234','/assets/prof2.jpg','valen95',NULL,NULL,NULL),(16,'محمد مهدی الآقاجانی','mma13742@gmail.com','$2y$10$lTgM7AaIsctgh4lOIXBGW.IIu62sx.e402Z6NYK5/rclTNWNFwVIW','/assets/prof2.jpg','asasasas','dOAMjPaFLwc72QcZY8lYV7nq7zGF8Jq4RpeHNQPnpIwQprxl3CbqC1KBoSD2','2017-01-17 16:59:52','2017-01-20 06:01:47'),(17,'کریم عبد الجبار','karim@aut.ac.ir','$2y$10$crNgpoXVvvUbFhXKIN0q..pqziL.ei4E0LN1hGzUtxYwUT7OpmPkC','/assets/prof2.jpg','کریم عبد الجبار',NULL,'2017-01-18 16:31:54','2017-01-18 16:31:54'),(18,'کاوه آهنگر','karimm@ymail.com','$2y$10$uXEhyBPyRgO/yUnNGGhmU.Y6dh41qOvW3XEIq8fwoPoyPiyzOtOoW','/assets/prof2.jpg','کاوه آهنگر','wDZsBqLV4f9rt388oykQ3Jt4l9gnL0kNhOlvilBnhxhYK2lMBrYLfbUePsWV','2017-01-20 03:52:20','2017-01-20 04:48:11'),(19,'آرتور تایمازوف','mma1374@gmail.com','$2y$10$xeHIArPdETsHvHZalSogFedHGtc39UenSfquBWCN083K3ZN11I2EW','/assets/prof2.jpg','artour','kmSSJuhoCldCWjbYG5sgkQPo5erQv2P6OUc1LVQdjIakGW1TEPUGLOOZPeVs','2017-01-20 05:13:17','2017-01-20 05:21:01'),(22,'کریم آقاخان','mma137421@gmail.com','$2y$10$kTXZ6sz8bXAcE.WxT5JkIOVXEqfcwHqrhKASQ2EZEaQkqvhN9kPPO','/assets/prof2.jpg','karim_agha','JllB0lIK8KY2ebC6IXgz5bTKdk4e1HXQK6FovNY741kJTWNLirZfUrNnSfkI','2017-01-20 05:24:54','2017-01-20 06:32:09');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -103,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-20 10:03:35
+-- Dump completed on 2017-01-20 16:29:58
