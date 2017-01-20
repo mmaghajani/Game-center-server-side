@@ -32,4 +32,10 @@ class SiteController extends Controller
     public function gameStart($title){
         return view('minesweeper');
     }
+
+    public function profile(Request $request, $token = null){
+        return view('profile')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 }

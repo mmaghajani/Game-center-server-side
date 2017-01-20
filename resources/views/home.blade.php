@@ -68,6 +68,11 @@
                                                     {{ csrf_field() }}
                                                 </form>
                                             </li>
+                                            <li>
+                                                <a href="{{url('/profile')}}">
+                                                    صفحه شخصی
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

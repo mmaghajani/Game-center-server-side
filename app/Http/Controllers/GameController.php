@@ -130,6 +130,9 @@ class GameController extends Controller
 
         $comment->game_id = $game->id;
 
+        $game->number_of_comments = $game->number_of_comments + 1;
+        $game->save();
+
         $comment->save();
 
         return redirect('/home');

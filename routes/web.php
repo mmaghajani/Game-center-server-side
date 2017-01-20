@@ -23,9 +23,11 @@ Route::get('/games/{title}/comments.json' , 'GameController@commentsTab');
 Route::get('/games/{title}/related_games.json' , 'GameController@relatedGamesTab');
 Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
 Route::get('/games.json' , 'GameListController@index');
+Route::post('/submit_comment' , 'GameController@submitComment');
 Route::get('/game_result/{title}' , 'GameController@submitResult');
 
 Route::get('/game_center/{title}' , 'SiteController@gameStart');
+Route::get('/login.html' , 'SiteController@login');
 Route::get('/home' , 'SiteController@index');
 Route::get('/' , 'SiteController@index');
 Route::get('/index.html' , 'SiteController@index');
@@ -34,7 +36,5 @@ Route::get('/games.html' , 'SiteController@game');
 Route::get('/register' , 'SiteController@register');
 Route::get('/register.html' , 'SiteController@register');
 Route::get('/login' , 'SiteController@login');
-Route::get('/login.html' , 'SiteController@login');
-Route::post('/submit_comment' , 'GameController@submitComment');
-
+Route::get('/profile' , 'SiteController@profile');
 Auth::routes();

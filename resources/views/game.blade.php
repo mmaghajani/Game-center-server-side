@@ -71,6 +71,11 @@
                                                 {{ csrf_field() }}
                                             </form>
                                         </li>
+                                        <li>
+                                            <a href="{{url('/profile')}}">
+                                                صفحه شخصی
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             @endif
@@ -277,7 +282,7 @@
                                     {{ csrf_field() }}
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <input type="text" contenteditable="false" name="title" class="h3"
+                                        <input type="text" readonly="readonly" name="title" class="h3"
                                                placeholder="عنوان" value="{{$game}}">
                                     </div>
 
