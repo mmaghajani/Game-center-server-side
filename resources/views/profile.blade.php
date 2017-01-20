@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">تغییر اطلاعات</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/change_info') }}">
                             {{ csrf_field() }}
 
                             <input type="hidden" name="token" value="{{ $token }}">

@@ -25,6 +25,7 @@ Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
 Route::get('/games.json' , 'GameListController@index');
 Route::post('/submit_comment' , 'GameController@submitComment');
 Route::get('/game_result/{title}' , 'GameController@submitResult');
+Route::post('/change_info' , 'UserController@changeInfo');
 
 Route::get('/game_center/{title}' , 'SiteController@gameStart');
 Route::get('/login.html' , 'SiteController@login');
