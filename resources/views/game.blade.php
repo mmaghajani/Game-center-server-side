@@ -100,7 +100,9 @@
             <div class="vertical-align--middle">
                 <div class="row container col-xs-12 col-sm-10 col-md-8 col-lg-8" id="header-content">
                     <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2 text-left">
-                        <button type="button" class="btn-primary h4">شروع بازی</button>
+                        <a href="{{url('/game_center/'.$game)}}">
+                            <button type="button" class="btn-primary h4">شروع بازی</button>
+                        </a>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
                         <div class="col-lg-9 col-xs-7 col-sm-9 col-md-9 text-right" id="info-panel">
@@ -275,8 +277,8 @@
                                     {{ csrf_field() }}
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <input type="text"  contenteditable="false" name="title" class="h3"
-                                        placeholder="عنوان" value="{{$game}}">
+                                        <input type="text" contenteditable="false" name="title" class="h3"
+                                               placeholder="عنوان" value="{{$game}}">
                                     </div>
 
                                     <div class="modal-body">

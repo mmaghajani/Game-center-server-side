@@ -28,4 +28,8 @@ class SiteController extends Controller
     public function listOfGame(){
         return view('game_list');
     }
+
+    public function gameStart($title){
+        return view('minesweeper');
+    }
 }
