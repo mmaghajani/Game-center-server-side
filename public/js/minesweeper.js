@@ -126,6 +126,26 @@ function okBtnClicked() {
 
 }
 
+function sendResult(score){
+    score = Number(score) * 1000;
+    var urlForHeader = my_domain + 'game_result/بازی Minesweeper' + '?score=' + score
+    $.ajax({
+        url: urlForHeader, type: 'GET', headers: {'Access-Control-Allow-Origin': '*'}, success: function (data) {
+            if (data.response.ok == true) {
+                result = data.response.result;
+                if( result == 'new_record'){
+                    window.alert("رکوردت ثبت شد . خیالت راحت :)")
+                }else if( result == 'record_broken'){
+                    window.alert("دمت گرم رکورد رو زدی!")
+                }else{
+                    window.alert("نه نشد .... :(")
+                }
+            }
+        }
+    });
+}
+
+
 function loose() {
     document.getElementById("smile").setAttribute("data-value", "hover");
     for (var i = 1; i <= (gameInformation['levels'])[0].cols * (gameInformation['levels'])[0].rows; i++) {
@@ -134,6 +154,7 @@ function loose() {
             document.getElementById(i.toString()).setAttribute("data-value", "mine");
         }
     }
+
     window.alert('You loose')
     document.getElementById("window").removeChild(document.getElementById("grid"));
     clearInterval(interval);
@@ -288,6 +309,9 @@ function win() {
             document.getElementById(i.toString()).setAttribute("data-value", "mine");
         }
     }
+
+    sendResult(document.getElementById("timer").textContent);
+
     window.alert('You win')
     document.getElementById("window").removeChild(document.getElementById("grid"));
     clearInterval(interval);

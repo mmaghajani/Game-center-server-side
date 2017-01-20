@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Comment;
 use App\Game;
+use App\Record;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,6 +133,50 @@ class GameController extends Controller
         $comment->save();
 
         return redirect('/home');
+    }
+
+    public function submitResult($title, Request $request)
+    {
+        if( Auth::guest()){
+            $result = ["Authentication required"];
+            $final = $this->createFinalResponse($result);
+            return $final;
+        }else {
+            $url = $request->fullUrl();
+            $score = explode('=', explode('?', $url)[1])[1];
+            $title = urldecode($title);
+
+            $user = Auth::user();
+            $record = Record::all()->where('user_id', '=', $user['id']);
+            $game = Game::all()->where('title', '=', $title)->pop();
+
+            if ($record->isEmpty()) {
+                $new_record = new Record;
+                $new_record->user_id = $user['id'];
+                $new_record->score = $score;
+                $new_record->level = intval($score / 10000) + 5;
+                $new_record->game_id = $game->id;
+                $new_record->displacement = 0;
+                $new_record->save();
+                $result = ["new_record"];
+                $final = $this->createFinalResponse($result);
+                return $final;
+            } else {
+                $record = $record->pop();
+                if ($record->score < $score) {
+                    $record->score = $score;
+                    $record->level = intval($score / 10000) + 5;
+                    $record->save();
+                    $result = ['record_broken'];
+                    $final = $this->createFinalResponse($result);
+                    return $final;
+                } else {
+                    $result = ['record_not_broken'];
+                    $final = $this->createFinalResponse($result);
+                    return $final;
+                }
+            }
+        }
     }
 
     private function formatDateToJalaliString()

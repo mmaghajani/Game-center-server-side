@@ -23,6 +23,7 @@ Route::get('/games/{title}/comments.json' , 'GameController@commentsTab');
 Route::get('/games/{title}/related_games.json' , 'GameController@relatedGamesTab');
 Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
 Route::get('/games.json' , 'GameListController@index');
+Route::get('/game_result/{title}' , 'GameController@submitResult');
 
 Route::get('/game_center/{title}' , 'SiteController@gameStart');
 Route::get('/home' , 'SiteController@index');
