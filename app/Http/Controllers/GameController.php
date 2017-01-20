@@ -115,7 +115,8 @@ class GameController extends Controller
 
 //        dd(html_entity_decode($input['title']));
         $comment = new Comment;
-        $comment->text = $input['content'];
+        $truthContent = htmlentities($input['content']);
+        $comment->text = $truthContent;
         $comment->rate = $input['score'];
         $comment->user_id = $user->id;
         $game = Game::all()->where('title', '=', html_entity_decode($input['title']));
