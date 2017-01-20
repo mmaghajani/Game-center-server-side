@@ -47,8 +47,33 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
 
-                        <li class="navbar-left"><a href="./login.html"><span class="glyphicon glyphicon-user"></span>
-                                ورود</a>
+                        <li class="navbar-left">
+                            @if(Auth::guest())
+                                <a href="./login.html"><span class="glyphicon glyphicon-user"></span>
+                                    ورود</a>
+                            @else
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="{{ url('/logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                خروج
+                                            </a>
+
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                                  style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
                         </li>
                         <li class="navbar-left">
                             <form class="navbar-form">
