@@ -27,6 +27,7 @@ Route::post('/submit_comment' , 'GameController@submitComment');
 Route::get('/game_result/{title}' , 'GameController@submitResult');
 Route::post('/change_info' , 'UserController@changeInfo');
 Route::post('/change_favorite_categories' , 'UserController@changeCat');
+Route::post('/upload_avatar' , 'UserController@uploadPhoto');
 
 Route::get('/game_center/{title}' , 'SiteController@gameStart');
 Route::get('/login.html' , 'SiteController@login');

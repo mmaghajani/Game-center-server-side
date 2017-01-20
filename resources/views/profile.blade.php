@@ -118,5 +118,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">انتخاب تصویر پروفایل</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ url('/upload_avatar') }}">
+                            {{ csrf_field() }}
+
+                            <input type="hidden" name="token" value="{{ $token }}">
+                            <input type="file" name="image">
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        ثبت
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @endsection
