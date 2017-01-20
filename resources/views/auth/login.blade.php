@@ -17,9 +17,9 @@
 <body>
 <div id="header">
     <ul id="menu" class="container">
-        <li id="account" class="account col-xs-6 text-center"><a href="#"><i
+        <li id="account" class="account col-xs-6 text-center"><a href="/login"><i
                         class="material-icons md-36">account_box</i></a></li>
-        <li id="games" class="games col-xs-6 text-center"><a href="#">ceitgames</a></li>
+        <li id="games" class="games col-xs-6 text-center"><a href="/home">ceitgames</a></li>
     </ul>
 </div>
 <div class="container" id="content">

@@ -25,6 +25,7 @@ Route::get('/games/{title}/gallery.json' , 'GameController@galleryTab');
 Route::get('/games.json' , 'GameListController@index');
 
 Route::get('/home' , 'SiteController@index');
+Route::get('/' , 'SiteController@index');
 Route::get('/index.html' , 'SiteController@index');
 Route::get('/games_list.html' , 'SiteController@listOfGame');
 Route::get('/games.html' , 'SiteController@game');
