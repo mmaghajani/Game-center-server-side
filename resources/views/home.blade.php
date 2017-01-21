@@ -31,21 +31,61 @@
         <div id="foregrand" class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="frame">
                 <div id="header">
-                    <div class="row text-center">
-                        <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
-                            <div class="text-left">
-                                <a href="register.html">
-                                    <button type="button" class="btn-primary text-info h4">ثبت نام</button>
-                                </a>
-                                <a href="login.html" class="text-info h4">ورود</a>
+                    @if (Auth::guest())
+                        <div class="row text-center">
+                            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                                <div class="text-left">
+                                    <a href="register.html">
+                                        <button type="button" class="btn-primary text-info h4">ثبت نام</button>
+                                    </a>
+                                    <a href="login.html" class="text-info h4">ورود</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                                <a href="./index.html"><p id="page-title" class="text-right text-info h4">امیرکبیر <span
+                                                class="studio">استودیو</span>
+                                        <i class="icon glyphicon ion-ios-game-controller-b"></i></p></a>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
-                            <a href="./index.html"><p id="page-title" class="text-right text-info h4">امیرکبیر <span
-                                            class="studio">استودیو</span>
-                                    <i class="icon glyphicon ion-ios-game-controller-b"></i></p></a>
+                    @else
+                        <div class="row text-center">
+                            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                                <div class="text-left">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{ url('/logout') }}"
+                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                    خروج
+                                                </a>
+
+                                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <a href="{{url('/profile')}}">
+                                                    صفحه شخصی
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                                <a href="./index.html"><p id="page-title" class="text-right text-info h4">امیرکبیر <span
+                                                class="studio">استودیو</span>
+                                        <i class="icon glyphicon ion-ios-game-controller-b"></i></p></a>
+                            </div>
                         </div>
-                    </div>
+
+                    @endif
+
                 </div>
                 <div id="content" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     <div id="subject" class="row text-right text-info h2"><p></p></div>

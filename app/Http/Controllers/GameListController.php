@@ -21,6 +21,13 @@ class GameListController extends Controller
             return strpos($value->title, $this->search_word);
         });
 
+        foreach ( $games as $game ){
+            foreach ($game->categories as $key) {
+                $game->categories->prepend($key->title);
+                $game->categories->pop();
+            }
+        }
+
         $result = ["games" => $filter_games->values()];
         $final = $this->createFinalResponse($result);
         return $final;
